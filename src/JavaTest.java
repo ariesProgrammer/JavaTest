@@ -247,8 +247,40 @@ class JavaTest {
 */
     // 11. Calculate maximum profit
     public static int maxProfit(int[] prices){
-        int result=0;
-        return result;
+        int maxValue = 0, minValue = 0, temp = 0;
+
+        // {3,1,5,1,2}
+
+        for(int i=0; i<prices.length-1; i++){
+
+            for(int j=0; j<prices.length-1; j++){
+                if(prices[j] > prices[j+1]){
+                    temp = prices[j+1];
+                    prices[j+1] = prices[j];
+                    prices[j] = temp;
+
+                }
+            }
+
+//            if(prices[i] < prices[i+1]){
+//                minValue = prices[i];
+//            }
+        }
+
+        System.out.println("After sorting: " +Arrays.toString(prices));
+
+        for(int i=0; i<prices.length; i++){
+            //[67, 34, 12, 78, 32]
+            if(prices[i] > prices[i+1]){
+                maxValue = prices[i];
+            }
+
+        }
+        System.out.println("MAXVALUE: " +prices[maxValue]);
+//        System.out.println("MAXVALUE: " +prices[maxValue]+ " and MINVALUE: " +prices[minValue]);
+
+        return maxValue;
+
     }
 
     public static void main(String[] args) {
@@ -274,9 +306,9 @@ class JavaTest {
         }
 
         System.out.println(Arrays.toString(prices));
+        System.out.println("Maximum profit: " + maxProfit(prices));
 
-
-/*        System.out.println("Maximum profit: " + maxProfit(prices));
+/*
 
         List<Integer> treeSorted = treeSort(arr.clone());
         System.out.println("Sorted Array (Tree Sort): " + treeSorted);
