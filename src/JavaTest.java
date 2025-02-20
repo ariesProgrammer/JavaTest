@@ -275,6 +275,7 @@ class JavaTest {
 
         System.out.println(Arrays.toString(prices));
 
+
 /*        System.out.println("Maximum profit: " + maxProfit(prices));
 
         List<Integer> treeSorted = treeSort(arr.clone());
