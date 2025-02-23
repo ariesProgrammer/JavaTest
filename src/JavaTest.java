@@ -1,54 +1,12 @@
 import java.util.*;
 
-/*
+
 import java.util.Scanner;
-
-public class Main {
-
-public static int maxProfit(int[] prices) {
-      int size = prices.length, minValue=0;
-	  int maxValue=0, result=0;
-
-	  for(int i=0; i<size; i++){
-
-				for(int j=1;  j<size-1; j++){
-					if(prices[j] > prices[i]){
-						maxValue = j;
-					}
-					if( prices[i] < prices[maxValue]){
-						minValue = i;
-					}
-				}
-
-
-	  }
-		System.out.print("MinValue: "+prices[minValue]+ " and MaxValue: "+prices[maxValue]);
-		result = prices[maxValue] - prices[minValue];
-		return result;
-}
-
-public static void main(String[] args) {
-// Read input values from stdin
-Scanner scanner = new Scanner(System.in);
-int n = scanner.nextInt();
-
-int[] prices = new int[n];
-for (int i = 0; i < n; i++) {
-prices[i] = scanner.nextInt();
-}
-
-// Call maxProfit and display the result
-int result = maxProfit(prices);
-//System.out.println(result);
-}
-}
-
-*/
 
 class JavaTest {
 
     // 1. Reverse an array using loops
-/*    public static int[] reverseArray(int[] arr) {
+    public static int[] reverseArray(int[] arr) {
         //int[] arr = {3, 1, 4, 1, 5, 9};
         int n = arr.length;
         for (int i = 0; i < n / 2; i++) {
@@ -244,10 +202,11 @@ class JavaTest {
 
         return Math.max(leftHeight, rightHeight) + 1;
     }
-*/
+
     // 11. Calculate maximum profit
     public static int maxProfit(int[] prices){
-        int maxValue = 0, minValue = 0, temp = 0;
+        int maxValue = Integer.MAX_VALUE, minValue = Integer.MIN_VALUE;
+        int result = 0;
 
         // {3,1,5,1,2}
 
@@ -255,38 +214,27 @@ class JavaTest {
 
             for(int j=0; j<prices.length-1; j++){
                 if(prices[j] > prices[j+1]){
-                    temp = prices[j+1];
-                    prices[j+1] = prices[j];
-                    prices[j] = temp;
-
+                    maxValue = prices[j];
+                }else{
+                    minValue = prices[j];
                 }
             }
 
-//            if(prices[i] < prices[i+1]){
-//                minValue = prices[i];
-//            }
         }
 
-        System.out.println("After sorting: " +Arrays.toString(prices));
 
-        for(int i=0; i<prices.length; i++){
-            //[67, 34, 12, 78, 32]
-            if(prices[i] > prices[i+1]){
-                maxValue = prices[i];
-            }
+        System.out.println("MAXVALUE: " +maxValue+ " and MINVALUE: " +minValue);
+        result = maxValue - minValue;
 
-        }
-        System.out.println("MAXVALUE: " +prices[maxValue]);
-//        System.out.println("MAXVALUE: " +prices[maxValue]+ " and MINVALUE: " +prices[minValue]);
 
-        return maxValue;
+        return result;
 
     }
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-/*        int[] arr = {3, 1, 4, 1, 5, 9};
+        int[] arr = {3, 1, 4, 1, 5, 9};
 
         System.out.println("Reversed Array: " + Arrays.toString(reverseArray(arr.clone())));
         System.out.println("Sorted Array (Bubble Sort): " + Arrays.toString(bubbleSort(arr.clone())));
@@ -295,7 +243,6 @@ class JavaTest {
         System.out.println("Second largest number: " + secondLargest(arr));
         System.out.println("Is 29 prime? " + isPrime(29));
 
- */
         System.out.println("Please enter maximum array length");
         int n = scan.nextInt();
         int[] prices = new int[n];
@@ -308,7 +255,7 @@ class JavaTest {
         System.out.println(Arrays.toString(prices));
         System.out.println("Maximum profit: " + maxProfit(prices));
 
-/*
+
 
         List<Integer> treeSorted = treeSort(arr.clone());
         System.out.println("Sorted Array (Tree Sort): " + treeSorted);
@@ -329,6 +276,6 @@ class JavaTest {
         System.out.println("LCA of 2 and 8: " + findLCA(root, 2, 8).val);
         System.out.println("Is tree balanced? " + isBalanced(root));
 
- */
+
     }
 }
